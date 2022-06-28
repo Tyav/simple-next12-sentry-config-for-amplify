@@ -14,6 +14,7 @@ const moduleExports = {
     disableClientWebpackPlugin: true,
   },
   output: 'standalone',
+  webpack5: false,
 };
 
 const sentryWebpackPluginOptions = {
