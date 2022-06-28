@@ -20,6 +20,7 @@
   },
   "devDependencies": {
     "eslint-config-next": "12.1.6",
-    "raw-loader": "^4.0.2"
+    "raw-loader": "^4.0.2",
+    "webpack": "~4.0.0"
   }
 }
