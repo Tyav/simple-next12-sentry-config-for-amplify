@@ -9,17 +9,17 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@sentry/nextjs": "^7.3.0",
+    "@sentry/nextjs": "~6.3.0",
     "@zeit/next-less": "^1.0.1",
     "@zeit/next-sass": "^1.0.1",
     "@zeit/next-stylus": "^1.0.1",
     "next": "~11.0.0",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "regenerate-unicode-properties": "^10.0.1"
   },
   "devDependencies": {
     "eslint-config-next": "12.1.6",
-    "raw-loader": "^4.0.2",
-    "webpack": "^5.73.0"
+    "raw-loader": "^4.0.2"
   }
 }
