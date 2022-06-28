@@ -13,8 +13,7 @@ const moduleExports = {
     disableServerWebpackPlugin: true,
     disableClientWebpackPlugin: true,
   },
-  output: 'standalone',
-  webpack5: false,
+  swcMinify: true,
 };
 
 const sentryWebpackPluginOptions = {
