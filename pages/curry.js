@@ -22,7 +22,7 @@ export default function Home() {
         </p>
 
         <button onClick={()=> {
-          throw new Error("Error occured")
+          console.log(game)
         }}>
           Error Botton
         </button>
