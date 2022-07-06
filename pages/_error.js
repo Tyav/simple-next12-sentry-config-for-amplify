@@ -13,7 +13,14 @@ function ErrorMessage({ statusText, message }) {
   );
 }
 
-export function Error({ statusCode }) {
+export function Error({ statusCode, hasGetInitialPropsRun , err }) {
+  if (!hasGetInitialPropsRun && err) {
+    // getInitialProps is not called in case of
+    // https://github.com/vercel/next.js/issues/8592. As a workaround, we pass
+    // err via _app.js so it can be captured
+    Sentry.captureException(err);
+    // Flushing is not required in this case as it only happens on the client
+  }
   return (
     <Wrapper>
       <Main>
@@ -41,14 +48,14 @@ export function Error({ statusCode }) {
   );
 }
 
-Error.getInitialProps = async ({ res, err, asPath }) => {
-  const statusCode = res ? res.statusCode : err ? err.statusCode : 404;
-  const errorInitialProps = await NextErrorComponent.getInitialProps({
-    res,
-    err,
-  })
+Error.getInitialProps = async (context) => {
+  const statusCode = context.res ? context.res.statusCode : context.err ? context.err.statusCode : 404;
+  const errorInitialProps = await NextErrorComponent.getInitialProps(context)
+
+  const { res, err, asPath } = context;
   errorInitialProps.hasGetInitialPropsRun = true
 
+  console.log(context)
   if (res?.statusCode === 404) {
     return errorInitialProps;
   }
